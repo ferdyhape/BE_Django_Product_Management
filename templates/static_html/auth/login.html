@@ -1,0 +1,30 @@
+{% extends 'app.html' %} {% block content %}
+
+
+<h4 class="mb-5 text-center">Login Page</h4>
+<div class="d-flex justify-content-center">
+  <div class="col-sm-5">
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+    {% endif %}
+    <form method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" placeholder="Username" class="form-control" id="username" required />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" placeholder="Password" class="form-control" id="password" required />
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+    <p class="mt-2">
+      Haven't registered yet? <a href="{% url 'register' %}">Register</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}
