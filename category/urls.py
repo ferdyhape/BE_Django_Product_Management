@@ -7,28 +7,22 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     path(
         "categories/",
-        login_required(
-            views_class_base.IndexView.as_view(),
-        ),
+        views_class_base.IndexView.as_view(),
         name="categories",
     ),
     path(
         "categories/create/",
-        login_required(views_class_base.CreateOrUpdateOrDeleteView.as_view()),
+        views_class_base.CreateOrUpdateOrDeleteView.as_view(),
         name="create_category",
     ),
     path(
         "categories/update/<int:category_id>/",
-        login_required(
-            views_class_base.CreateOrUpdateOrDeleteView.as_view(mode="update")
-        ),
+        views_class_base.CreateOrUpdateOrDeleteView.as_view(mode="update"),
         name="update_category",
     ),
     path(
         "categories/delete/<int:category_id>/",
-        login_required(
-            views_class_base.CreateOrUpdateOrDeleteView.as_view(mode="delete")
-        ),
+        views_class_base.CreateOrUpdateOrDeleteView.as_view(mode="delete"),
         name="delete_category",
     ),
 ]
